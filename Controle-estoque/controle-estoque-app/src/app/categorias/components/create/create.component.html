@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Novo Autor</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="categoriaForm" (ngSubmit)="submit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome da categoria</mat-label>
+                <input matInput placeholder="Digite o nome do Autor" formControlName="cat_nome" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <button [disabled]="!categoriaForm.valid" mat-raised-button color="primary">Cadastrar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
