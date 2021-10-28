@@ -12,36 +12,17 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Produto {
+public class SubCategoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(length = 95)
-    private String pro_nome;
-
-    @Column()
-    private String pro_descricao;
-
-    @Column()
-    private Double pro_valorpago;
-
-    @Column()
-    private Double pro_valorvenda;
-
-    @Column()
-    private Double pro_qtde;
-
-    @Column()
-    private Integer umed_cod;
-
+    private String scat_nome;
 
     @ManyToOne()
     @JoinColumn(name = "id_cat", nullable = false)
     private Categoria categoria;
 
-    @ManyToOne()
-    @JoinColumn(name = "id_scat", nullable = false)
-    private SubCategoria subCategoria;
 }

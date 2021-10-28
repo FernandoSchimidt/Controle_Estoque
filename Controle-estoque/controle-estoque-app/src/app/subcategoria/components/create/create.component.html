@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Nova Sub Categoria</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="scategoriaForm" (ngSubmit)="submit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome da subcategoria</mat-label>
+                <input matInput placeholder="Digite o nome da subcategoria" formControlName="scat_nome" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione a Categoria</mat-label>
+                <mat-select [(ngModel)]="selectedValue" formControlName="cat_cod">
+                  <mat-option *ngFor="let cat of categorias$ | async" [value]="cat.id">
+                    {{cat.cat_nome}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            <button [disabled]="!scategoriaForm.valid" mat-raised-button color="primary">Cadastrar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

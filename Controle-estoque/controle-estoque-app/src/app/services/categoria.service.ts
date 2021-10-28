@@ -27,4 +27,8 @@ export class CategoriaService {
   salvar(categoria: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>(this.url, categoria);
   }
+  
+  listarCategorias(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.url + '/all')
+  }
 }

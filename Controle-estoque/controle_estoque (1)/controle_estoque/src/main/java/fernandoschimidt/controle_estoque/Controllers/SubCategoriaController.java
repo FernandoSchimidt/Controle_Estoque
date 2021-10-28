@@ -1,7 +1,9 @@
 package fernandoschimidt.controle_estoque.Controllers;
 
 import fernandoschimidt.controle_estoque.Entity.Categoria;
+import fernandoschimidt.controle_estoque.Entity.SubCategoria;
 import fernandoschimidt.controle_estoque.Repository.CategoriaRepository;
+import fernandoschimidt.controle_estoque.Repository.SubCategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,51 +12,43 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/categoria")
+@RequestMapping("/api/subcategoria")
 @CrossOrigin("*")
-public class CategoriaController {
-
-    private CategoriaRepository categoriaRepository;
+public class SubCategoriaController {
+    private SubCategoriaRepository subCategoriaRepository;
 
     @Autowired
-    public CategoriaController(CategoriaRepository categoriaRepository) {
-        this.categoriaRepository = categoriaRepository;
+    public SubCategoriaController(SubCategoriaRepository subCategoriaRepository) {
+        this.subCategoriaRepository = subCategoriaRepository;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Categoria create(@RequestBody Categoria categoria) {
-        return categoriaRepository.save(categoria);
+    public SubCategoria create(@RequestBody SubCategoria subCategoria) {
+        return subCategoriaRepository.save(subCategoria);
     }
 
     @GetMapping
-    public Page<Categoria> list(
+    public Page<SubCategoria> list(
             @RequestParam(value = "page", defaultValue = "0") Integer pagina,
             @RequestParam(value = "size", defaultValue = "10") Integer tamanhoPagina
     ) {
         Sort sort = Sort.by(Sort.Direction.ASC, "id");
         PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina, sort);
-        return categoriaRepository.findAll(pageRequest);
+        return subCategoriaRepository.findAll(pageRequest);
 
-    }
-
-    @GetMapping("/all")
-    public List<Categoria> getAll() {
-        return categoriaRepository.findAll();
     }
 
     @GetMapping("{id}")
-    public Categoria findById(@PathVariable Integer id) {
-        return categoriaRepository
+    public SubCategoria findById(@PathVariable Integer id) {
+        return subCategoriaRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id) {
-        categoriaRepository.deleteById(id);
+        subCategoriaRepository.deleteById(id);
     }
 }

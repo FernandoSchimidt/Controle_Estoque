@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'categoria', loadChildren: () => import('./categorias/categorias.module').then(m => m.CategoriasModule) },
   { path: 'cliente', loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule) },
   { path: 'fornecedor', loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule) },
+  { path: 'sub-categoria', loadChildren: () => import('./subcategoria/subcategoria.module').then(m => m.SubcategoriaModule) },
 ];
 
 @NgModule({

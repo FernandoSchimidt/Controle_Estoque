@@ -13,7 +13,19 @@
             <mat-panel-description>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <a mat-list-item routerLink="categoria">Categoria</a>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Categorias
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="categoria">Categoria</a>
+              <a mat-list-item routerLink="sub-categoria">Sub Categoria</a>
+            </mat-expansion-panel>
+          </mat-accordion>
           <a mat-list-item routerLink="cliente">Cliente</a>
           <a mat-list-item routerLink="fornecedor">Fornecedor</a>
         </mat-expansion-panel>
