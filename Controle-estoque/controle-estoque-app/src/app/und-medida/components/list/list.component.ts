@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { CategoriaService } from 'src/app/services/categoria.service';
-import { Categoria } from '../../Categoria.model';
+import { UndMedidaService } from 'src/app/services/und-medida.service';
+import { UndMedida } from '../UndMedida.model';
 
 @Component({
   selector: 'app-list',
@@ -12,8 +12,8 @@ import { Categoria } from '../../Categoria.model';
 })
 export class ListComponent implements OnInit {
 
-  categorias: Categoria[] = [];
-  colunas = ['id', 'nome']
+  undMedidas: UndMedida[] = [];
+  colunas = ['id', 'umed_nome']
 
   totalElementos = 0;
   pagina = 0;
@@ -21,19 +21,19 @@ export class ListComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 15, 20]
 
   constructor(
-    private service: CategoriaService,
+    private service: UndMedidaService,
     private dialog: MatDialog
     , private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.listaCategorias(this.pagina, this.tamanho);
+    this.listaUmed(this.pagina, this.tamanho);
   }
   
-  listaCategorias(page = 0, size = 10) {
-    this.service.paginaCategoria(page, size)
+  listaUmed(page = 0, size = 10) {
+    this.service.paginaUndMedida(page, size)
       .subscribe(res => {
-        this.categorias = res.content;
+        this.undMedidas = res.content;
         this.totalElementos = res.totalElements;
         this.pagina = res.number;
       })
@@ -42,8 +42,6 @@ export class ListComponent implements OnInit {
   paginar(event: PageEvent) {
     this.pagina = event.pageIndex;
     this.tamanho = event.pageSize;
-    this.listaCategorias(this.pagina, this.tamanho)
+    this.listaUmed(this.pagina, this.tamanho)
   }
-  
-
 }

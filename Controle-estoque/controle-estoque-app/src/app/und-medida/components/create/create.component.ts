@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CategoriaService } from 'src/app/services/categoria.service';
-import { Categoria } from '../../Categoria.model';
+import { UndMedidaService } from 'src/app/services/und-medida.service';
+import { UndMedida } from '../UndMedida.model';
 
 @Component({
   selector: 'app-create',
@@ -11,25 +11,26 @@ import { Categoria } from '../../Categoria.model';
 })
 export class CreateComponent implements OnInit {
 
-  categoriaForm!: FormGroup;
+  undMedidaForm!: FormGroup;
 
   constructor(
+    private service: UndMedidaService,
     private fb: FormBuilder,
-    private service: CategoriaService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.categoriaForm = this.fb.group({
-      cat_nome: ['', [Validators.required]]
+    this.undMedidaForm = this.fb.group({
+      umed_nome: ['', [Validators.required]]
     })
+
   }
   submit() {
-    const formValues = this.categoriaForm.value;
-    let categoria: Categoria = new Categoria(formValues.cat_nome);
-    this.service.salvar(categoria)
+    const formValues = this.undMedidaForm.value;
+    let undMedida: UndMedida = new UndMedida(formValues.umed_nome);
+    this.service.salvar(undMedida)
       .subscribe(res => {
-        this.router.navigateByUrl('/categoria')
+        this.router.navigateByUrl('/und-medida')
       },
         (err) => {
           alert(err)

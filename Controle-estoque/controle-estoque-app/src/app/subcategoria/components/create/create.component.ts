@@ -28,7 +28,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.scategoriaForm = this.fb.group({
       scat_nome: ['', [Validators.required]],
-      cat_cod: ['', [Validators.required]]
+      categoria: ['', [Validators.required]]
     });
     this.categorias$ = this.service.listarCategorias();
 
@@ -37,12 +37,10 @@ export class CreateComponent implements OnInit {
 
   submit() {
     const formValues = this.scategoriaForm.value;
-    console.log(formValues)
     let scategoria: SubCategoria = new SubCategoria(
       formValues.scat_nome,
-      formValues.cat_cod
-      );
-    console.log(scategoria)
+      formValues.categoria
+    );
     this.subCatService.salvar(scategoria)
       .subscribe(res => {
         this.router.navigateByUrl('/sub-categoria')

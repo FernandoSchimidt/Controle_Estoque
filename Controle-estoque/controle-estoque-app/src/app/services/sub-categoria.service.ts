@@ -25,4 +25,7 @@ export class SubCategoriaService {
   salvar(subCategoria: SubCategoria): Observable<SubCategoria> {
     return this.http.post<SubCategoria>(this.url, subCategoria);
   }
+  listarSubCategorias(): Observable<SubCategoria[]> {
+    return this.http.get<SubCategoria[]>(this.url + '/all')
+  }
 }

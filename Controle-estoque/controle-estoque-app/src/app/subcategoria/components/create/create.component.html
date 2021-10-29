@@ -14,8 +14,8 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Selecione a Categoria</mat-label>
-                <mat-select [(ngModel)]="selectedValue" formControlName="cat_cod">
-                  <mat-option *ngFor="let cat of categorias$ | async" [value]="cat.id">
+                <mat-select [(ngModel)]="selectedValue" formControlName="categoria">
+                  <mat-option *ngFor="let cat of categorias$ | async" [value]="cat">
                     {{cat.cat_nome}}
                   </mat-option>
                 </mat-select>

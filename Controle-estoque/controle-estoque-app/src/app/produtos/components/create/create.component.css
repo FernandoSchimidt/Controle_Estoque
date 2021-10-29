@@ -1,0 +1,33 @@
+mat-card{
+    width: 80%;
+    margin: 50px auto;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width:770px) {
+
+mat-card{
+    width: 50%;
+}
+}
+
+mat-card-content{
+    padding: 30px;
+}
+
+div{
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+}
+.valores{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.valores-item{
+    width: 45%;
+    min-width: 200px;
+}

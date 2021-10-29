@@ -12,17 +12,12 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubCategoria {
+public class Undmedida {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 95)
-    private String scat_nome;
-
-    @ManyToOne()
-    @JoinColumn(name = "id_cat", nullable = false)
-    private Categoria categoria;
-
+    private String umed_nome;
 }

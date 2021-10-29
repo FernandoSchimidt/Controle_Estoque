@@ -2,6 +2,7 @@ package fernandoschimidt.controle_estoque.Controllers;
 
 import fernandoschimidt.controle_estoque.Entity.Categoria;
 import fernandoschimidt.controle_estoque.Entity.SubCategoria;
+import fernandoschimidt.controle_estoque.Entity.Undmedida;
 import fernandoschimidt.controle_estoque.Repository.CategoriaRepository;
 import fernandoschimidt.controle_estoque.Repository.SubCategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/subcategoria")
@@ -40,15 +43,20 @@ public class SubCategoriaController {
 
     }
 
+    @GetMapping("/all")
+    public List<SubCategoria> getAll() {
+        return subCategoriaRepository.findAll();
+    }
+
     @GetMapping("{id}")
-    public SubCategoria findById(@PathVariable Integer id) {
+    public SubCategoria findById(@PathVariable Long id) {
         return subCategoriaRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable Long id) {
         subCategoriaRepository.deleteById(id);
     }
 }

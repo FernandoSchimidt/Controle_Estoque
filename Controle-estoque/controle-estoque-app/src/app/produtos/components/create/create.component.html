@@ -1,0 +1,70 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Nova Produto</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="produtoForm" (ngSubmit)="submit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Digite o nome do produto" formControlName="pro_nome" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Descrição</mat-label>
+                <input matInput placeholder="descrição do produto" formControlName="pro_descricao" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <div class="valores">
+                <mat-form-field appearance="fill" class="valores-item">
+                    <mat-label>Valor Pago</mat-label>
+                    <input matInput placeholder="Digite o valor pago" formControlName="pro_valorpago" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="valores-item">
+                    <mat-label>Valor Venda</mat-label>
+                    <input matInput placeholder="Digite o valor de venda" formControlName="pro_valorvenda" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Quantidade</mat-label>
+                <input matInput placeholder="Digite a Quantidade" formControlName="pro_qtde" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione a Unidade de Medida</mat-label>
+                <mat-select [(ngModel)]="selectedValue" formControlName="undMedida">
+                    <mat-option *ngFor="let umed of undMedida$ | async" [value]="umed">
+                        {{umed.umed_nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione a Categoria</mat-label>
+                <mat-select [(ngModel)]="selectedValue2" formControlName="categoria">
+                    <mat-option *ngFor="let cat of categorias$ | async" [value]="cat">
+                        {{cat.cat_nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Selecione a Sub Categoria</mat-label>
+                <mat-select [(ngModel)]="selectedValue3" formControlName="subCategoria">
+                    <mat-option *ngFor="let scat of scategorias$ | async" [value]="scat">
+                        {{scat.scat_nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button [disabled]="!produtoForm" mat-raised-button color="primary">Cadastrar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

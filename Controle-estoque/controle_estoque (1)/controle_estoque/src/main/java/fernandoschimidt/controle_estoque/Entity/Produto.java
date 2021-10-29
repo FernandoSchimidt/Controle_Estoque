@@ -16,7 +16,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(length = 95)
     private String pro_nome;
@@ -33,8 +33,9 @@ public class Produto {
     @Column()
     private Double pro_qtde;
 
-    @Column()
-    private Integer umed_cod;
+    @ManyToOne()
+    @JoinColumn(name = "id_undmedida", nullable = false)
+    private Undmedida undmedida;
 
 
     @ManyToOne()

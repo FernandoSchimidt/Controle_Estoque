@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>
+        <h1>Nova Unidade de Medida</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="undMedidaForm" (ngSubmit)="submit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome da categoria</mat-label>
+                <input matInput placeholder="Digite a unidade de medida" formControlName="umed_nome" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <button [disabled]="!undMedidaForm.valid" mat-raised-button color="primary">Cadastrar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
