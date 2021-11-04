@@ -1,1 +1,95 @@
-<p>create works!</p>
+<mat-card>
+    <mat-card-title>
+        <h1>Novo Fornecedor</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="fornecedorForm" (ngSubmit)="submit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Digite o nome do Fornecedor" formControlName="for_nome" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <div class="valores">
+                <mat-form-field appearance="fill">
+                    <mat-label>Razão Social</mat-label>
+                    <input matInput placeholder="Razão Social" formControlName="for_rsocial" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="valores-item">
+                    <mat-label>IE</mat-label>
+                    <input matInput placeholder="IE" formControlName="for_ie" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="valores-item">
+                    <mat-label>CNPJ</mat-label>
+                    <input matInput placeholder="CNPJ" formControlName="for_cnpj" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="valores">
+                <mat-form-field appearance="fill">
+                    <mat-label>CEP</mat-label>
+                    <input matInput placeholder="CEP" formControlName="for_cep" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Endereço</mat-label>
+                    <input matInput placeholder="Endereço" formControlName="for_endereco" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Bairro</mat-label>
+                    <input matInput placeholder="Bairro do Fornecedor" formControlName="for_bairro" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <input matInput placeholder="Numero de Telefone" formControlName="for_fone" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <div class="num-fone">
+                <mat-form-field appearance="fill" style="width: 45%;min-width: 200px;">
+                    <mat-label>Celular</mat-label>
+                    <input matInput placeholder="Numero do celular do responsavel" formControlName="for_cel" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="width: 45%;min-width: 200px;">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="for_email" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="valores">
+            <mat-form-field appearance="fill">
+                <mat-label>N°</mat-label>
+                <input matInput placeholder="Numero do endereço" formControlName="for_endnumero" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            
+                <mat-form-field appearance="fill">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput placeholder="Cidade" formControlName="for_cidade" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Estado</mat-label>
+                    <input matInput placeholder="Estado" formControlName="for_estado" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+
+
+            <button [disabled]="!fornecedorForm.valid" mat-raised-button color="primary">Cadastrar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

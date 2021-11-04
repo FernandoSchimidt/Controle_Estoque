@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Categoria } from 'src/app/categorias/Categoria.model';
@@ -33,7 +34,8 @@ export class CreateComponent implements OnInit {
     private categoriService: CategoriaService,
     private undMedidaService: UndMedidaService,
     private service: ProdutoService,
-    private router: Router
+    private router: Router,
+    private snckbar: MatSnackBar
 
   ) { }
 
@@ -70,12 +72,18 @@ export class CreateComponent implements OnInit {
     );
     this.service.create(produto)
       .subscribe(res => {
+        this.mensagem('Produto: ' + res.pro_nome + ' salvo com sucesso!', 'Sucesso');
         this.router.navigateByUrl('/produto')
       },
         (err) => {
           alert(err)
         })
 
+  }
+  mensagem(mensagem: string, titulo: string) {
+    this.snckbar.open(mensagem, titulo, {
+      duration: 3000
+    })
   }
 
 }

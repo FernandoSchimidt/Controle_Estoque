@@ -1,0 +1,11 @@
+
+table{
+    width: 100%;
+}
+mat-card{
+    width: 95%;
+    margin: 50px auto;
+}
+mat-icon{
+    cursor: pointer;
+}

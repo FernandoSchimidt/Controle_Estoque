@@ -63,7 +63,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <button [disabled]="!produtoForm" mat-raised-button color="primary">Cadastrar</button>
+            <button [disabled]="!produtoForm.valid" mat-raised-button color="primary">Cadastrar</button>
 
         </form>
     </mat-card-content>

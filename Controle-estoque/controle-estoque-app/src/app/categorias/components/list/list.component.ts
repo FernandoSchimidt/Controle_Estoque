@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   totalElementos = 0;
   pagina = 0;
   tamanho = 10;
-  pageSizeOptions: number[] = [5, 10, 15, 20]
+  pageSizeOptions: number[] = [5, 10, 15, 200]
 
   constructor(
     private service: CategoriaService,

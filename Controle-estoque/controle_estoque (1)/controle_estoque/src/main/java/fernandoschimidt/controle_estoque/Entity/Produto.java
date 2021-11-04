@@ -21,7 +21,7 @@ public class Produto {
     @Column(length = 95)
     private String pro_nome;
 
-    @Column()
+    @Column(length = 500)
     private String pro_descricao;
 
     @Column()
@@ -45,4 +45,6 @@ public class Produto {
     @ManyToOne()
     @JoinColumn(name = "id_scat", nullable = false)
     private SubCategoria subCategoria;
+
+
 }
